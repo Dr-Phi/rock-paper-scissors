@@ -1,17 +1,26 @@
-// 1 = piedra  2 = papel  3 = tijera
 let playerChoice;
 let computerChoice;
 
 function getComputerChoice(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
-
-function getPlayerChoice() {
-  playerChoice = prompt("Rock, Scissors, Paper!: ").toLowerCase();
+//translate get computerChoice to string where 1 = rock  2 = scissors  3 = paper
+function realComputerChoice() {
+  if (getComputerChoice() === 1) {
+    computerChoice = "rock";
+  } else if (getComputerChoice() === 2) {
+    computerChoice = "scissors";
+  } else computerChoice = "paper";
 }
 
-function gameRPS(playerChoice, computerChoice) {
-  console.log("1... 2... 3...");
+function getPlayerChoice() {
+  playerChoice = prompt("Rock, Scissors, Paper: ").toLowerCase();
+}
+
+function gameRPS() {
+  console.log("1... 2... 3... Rock, Scissors, Paper!");
+  getComputerChoice();
+  realComputerChoice();
   getPlayerChoice();
   console.log(`You chose ${playerChoice}, Computer chose ${computerChoice}.`);
   // player choose rock
@@ -32,10 +41,12 @@ function gameRPS(playerChoice, computerChoice) {
   }
   //player choose paper
   else {
-    if (computer === "rock") {
+    if (computerChoice === "rock") {
       console.log("You win!");
-    } else if (computer === "paper") {
+    } else if (computerChoice === "paper") {
       console.log("It's a tie!");
     } else console.log("Computer wins!");
   }
 }
+
+gameRPS();
